@@ -28,8 +28,27 @@ h2 {
   color: var(--color-neutral-dark);
 }
 
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-neutral-dark);
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-neutral-dark);
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-neutral-dark);
+}
+
 label {
   font-size: 14px;
-  letter-spacing: 3%;
+  letter-spacing: .2px;
   text-transform: uppercase;
+  font-weight: 500;
 }
