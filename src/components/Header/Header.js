@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Header = ({ }) => (
+const Header = () => (
     <header className="flex justify-between px-5 py-6 w-full bg-[color:var(--color-primary)]">
         <div className="flex flex-1 gap-3">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/143d32b04086a23672ad5ad586e703f16d99d0474ce35294e9205f2e744cbf5d?apiKey=72ddffbbca3c46ef89dd86c4ca9b4252&" alt="Logo 1" className="shrink-0 my-auto aspect-[1.03] w-[31px]" />
