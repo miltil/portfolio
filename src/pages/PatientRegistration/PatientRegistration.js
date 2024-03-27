@@ -1,11 +1,11 @@
 import * as React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import StepIndicator from "../../components/StepIndicator/StepIndicator";
-import PatientInfo from "../../components/PatientInfo/PatientInfo";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Button from "../../components/Button/Button";
-import RegisterDependent from "../../components/RegisterDependent/RegisterDependent";
+import PatientInfoPage from "../PatientInfoPage";
+import VisitReasonPage from "../VisitReasonPage";
 
 const PatientRegistration = () => {
     const patientProfile = {
@@ -18,11 +18,11 @@ const PatientRegistration = () => {
 
     const [currentPatient, setCurrentPatient] = useState(undefined);
 
-    const steps = [
-      {pageName: 'Patient', state: 'current'},
-      {pageName: 'Reason', state: 'future'},
-      {pageName: 'Timeslot', state: 'future'},
-      {pageName: 'Confirm', state: 'future'}
+    const pages = [
+        { pageName: 'Patient', state: 'current' },
+        { pageName: 'Reason', state: 'future' },
+        { pageName: 'Timeslot', state: 'future' },
+        { pageName: 'Confirm', state: 'future' }
     ];
 
     const patientInfoClick = () => {
@@ -34,44 +34,34 @@ const PatientRegistration = () => {
     }
 
     const handleNext = () => {
-      alert('hey!');
+        alert('hey!');
     };
-  
+
     const handleBack = () => {
-      alert('back!');
+        alert('back!');
     };
-  
+
     return (
-      <div className="flex flex-col mx-auto w-full bg-[color:var(--color-neutral-white)] max-w-[480px]">
-        <Header/>
-        <main className="flex flex-col px-5 mt-14 w-full">
-          <StepIndicator steps={steps} />
-          <h2 className="self-center mt-9 text-center">
-            What patient is seeking treatment today?
-          </h2>
-          <PatientInfo
-            onClick={patientInfoClick}
-            selected={currentPatient === 'profile'}
-            patientProfile={patientProfile}
-          />
-          <div className="flex flex-row w-full gap-1.5 mt-4">
-            <div className="flex-1 my-auto h-[1px] bg-[color:var(--color-neutral-gray)]" />
-            <div className=""><p>OR</p></div>
-            <div className="flex-1 my-auto h-[1px] bg-[color:var(--color-neutral-gray)]" />
-          </div>
-          <RegisterDependent open />
-          <div className="mt-10">
-            <Button type={currentPatient ? "primary" : "disabled"} onClick={handleNext}>
-              next
-            </Button>
-            <Button type="secondary" onClick={handleBack}>
-              back
-            </Button>
+        <div className="flex flex-col min-h-screen mx-auto w-full bg-[color:var(--color-neutral-white)]">
+            <Header />
+            <div className="flex justify-center w-full flex-1"> {/* Adjusted flex-1 for content */}
+                <main className="flex flex-col px-5 mt-14 w-full max-w-[480px] md:max-w-[1140px]">
+                    <StepIndicator steps={pages} />
+                    {/* <PatientInfoPage patientInfoClick={patientInfoClick} currentPatient={currentPatient} patientProfile={patientProfile}/> */}
+                    <VisitReasonPage />
+                    <div className="mt-10 mb-10 flex flex-col md:flex-row-reverse md:justify-between md:gap-10">
+                        <Button type={true ? "primary" : "disabled"} onClick={handleNext} className="md:w-1/2 md:mr-2">
+                            next
+                        </Button>
+                        <Button type="secondary" onClick={handleBack} className="md:w-1/2 md:ml-2">
+                            back
+                        </Button>
+                    </div>
+                </main>
             </div>
-        </main>
-        <Footer/>
-      </div>
+            <Footer />
+        </div>
     );
-  };
+};
 
 export default PatientRegistration;

@@ -52,3 +52,29 @@ label {
   text-transform: uppercase;
   font-weight: 500;
 }
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+  
+  h2 {
+    font-size: 34px;
+  }
+  
+  h3 {
+    font-size: 28px;
+  }
+  
+  h4 {
+    font-size: 22px;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+  
+  label {
+    font-size: 16px;
+  }
+}
