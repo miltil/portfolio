@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./state";
+import LandingPage from "./pages/LandingPage";
 import DemographicsPage from "./pages/DemographicsPage";
 import VisitReasonPage from "./pages/VisitReasonPage";
 import TimeslotPickerPage from "./pages/TimeslotPickerPage";
@@ -15,6 +16,7 @@ const App = () => {
           <Layout>
           <StepIndicator />
             <Routes>
+              <Route path="/" element={<LandingPage />} />
               <Route path="/demographics" element={<DemographicsPage />} />
               <Route path="/visit-reason" element={<VisitReasonPage />} />
               <Route path="/timeslots" element={<TimeslotPickerPage />} />
