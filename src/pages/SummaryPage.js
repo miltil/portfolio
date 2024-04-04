@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppState } from "../state";
 import Button from "../components/Button";
 
-const TimeslotPickerPage = () => {
+const SummaryPage = () => {
   const [state, setState] = useAppState();
   const { handleSubmit } = useForm({ defaultValues: state });
   const navigate = useNavigate();
@@ -14,13 +14,13 @@ const TimeslotPickerPage = () => {
   };
 
   const handleBack = () => {
-    navigate("/visit-reason");
+    navigate("/timeslots");
   }
 
   return (
     <>
       <h2 className="self-center mt-9 md:mt-14 text-center">
-        Select your available times
+        Confirm your details
       </h2>
       <form onSubmit={handleSubmit(saveData)}>
         <div className="mt-10 mb-10 flex flex-col md:flex-row-reverse md:justify-between md:gap-10">
@@ -32,4 +32,4 @@ const TimeslotPickerPage = () => {
   );
 };
 
-export default TimeslotPickerPage;
+export default SummaryPage;

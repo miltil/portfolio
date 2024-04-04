@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Import useEffect
 import { useNavigate } from "react-router-dom";
 import { useAppState } from "../state";
 import Button from "../components/Button";
@@ -13,8 +13,7 @@ const DemographicsPage = () => {
   const navigate = useNavigate();
 
   const saveData = (data) => {
-    console.log(data);
-    setState({ ...state, ...data });
+    setState({ ...state, patientProfile: patientProfile });
     navigate("/visit-reason");
   };
 
@@ -22,11 +21,9 @@ const DemographicsPage = () => {
     navigate("/");
   }
 
-  // This hook will store if the default profile is selected or not
   const [defaultProfileSelected, setDefaultProfileSelected] = useState(false);
 
   const patientInfoClick = () => {
-
     setDefaultProfileSelected(!defaultProfileSelected);
   }
 
@@ -36,7 +33,12 @@ const DemographicsPage = () => {
     dob: "January 1, 1985",
     email: "ashleywilliamson@m.com",
     phone: "555-555-5555"
-}
+  }
+
+  // Use useEffect to log state changes
+  useEffect(() => {
+    console.log('patient info:', state.patientProfile);
+  }, [state.patientProfile]); // Watch for changes in state.patientProfile
 
   return (
     <>
@@ -44,11 +46,13 @@ const DemographicsPage = () => {
         What patient is seeking treatment today?
       </h2>
       <form onSubmit={handleSubmit(saveData)}>
+        <div className="mt-10">
           <PatientInfo patientInfoClick={patientInfoClick} selected={defaultProfileSelected} patientProfile={patientProfile}/>
-          <div className="mt-10 mb-10 flex flex-col md:flex-row-reverse md:justify-between md:gap-10">
-            <Button type={true ? "primary" : "disabled"} submit className="md:w-1/2 md:mr-2">Next</Button>
-            <Button type="secondary" onClick={handleBack} className="md:w-1/2 md:ml-2">Back</Button>
-          </div>
+        </div>
+        <div className="mt-10 mb-10 flex flex-col md:flex-row-reverse md:justify-between md:gap-10">
+          <Button type={defaultProfileSelected === true ? "primary" : "disabled"} submit className="md:w-1/2 md:mr-2">Next</Button>
+          <Button type="secondary" onClick={handleBack} className="md:w-1/2 md:ml-2">Back</Button>
+        </div>
       </form>
     </>
   );
