@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAppState } from "../state";
-import { useEffect } from "react";
 import Button from "../components/Button";
 
 const VisitReasonPage = () => {
@@ -11,14 +10,8 @@ const VisitReasonPage = () => {
 
   const saveData = (data) => {
     setState({ ...state, visitReason: data.visitReason });
-    console.log('patient is:', state.patientProfile, 'visit:', state.visitReason);
     navigate("/timeslots");
   };
-
-  // Use useEffect to log state changes
-  useEffect(() => {
-    console.log('patient info:', state.patientProfile);
-  }, [state.patientProfile]); // Watch for changes in state.patientProfile
 
   const handleBack = () => {
     navigate("/demographics");

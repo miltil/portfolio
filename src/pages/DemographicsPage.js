@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react"; // Import useEffect
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppState } from "../state";
 import Button from "../components/Button";
@@ -32,13 +32,14 @@ const DemographicsPage = () => {
     gender: "F",
     dob: "January 1, 1985",
     email: "ashleywilliamson@m.com",
-    phone: "555-555-5555"
+    phone: "555-555-5555",
+    address: {
+      street: "111 1st St",
+      city: "Denver",
+      state: "CO",
+      zip: "80401"
+    }
   }
-
-  // Use useEffect to log state changes
-  useEffect(() => {
-    console.log('patient info:', state.patientProfile);
-  }, [state.patientProfile]); // Watch for changes in state.patientProfile
 
   return (
     <>
