@@ -6,7 +6,7 @@ const StepIndicator = () => {
   const location = useLocation();
 
   const getState = (path) => {
-    const siteMap = ['/demographics', '/visit-reason', '/timeslots', '/confirm'];
+    const siteMap = ['/demographics', '/visit-reason', '/timeslots', '/confirm', '/confirmed'];
     const currentPage = siteMap.indexOf(location.pathname);
     const currentStep = siteMap.indexOf(path);
     if (currentPage === currentStep) {

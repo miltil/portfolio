@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppState } from "../state";
 import { convertTimeToDisplay } from "../utils/timeUtils";
 import Button from "../components/Button";
 
 const ConfirmationPage = () => {
-  const [state, setState] = useAppState();
+  const [state] = useAppState();
   const [termsAgree, setTermsAgree] = useState(false);
 
   const checkHandler = () => {
@@ -15,7 +15,7 @@ const ConfirmationPage = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate("/visit/:id")
+    navigate("/confirmed")
   }
 
   const handleBack = () => {

@@ -18,9 +18,7 @@ const TimeslotPickerPage = () => {
   const [endTime, setEndTime] = useState(convertTimeToCalc(timeSlots[0].name));
   const [selectedTimeSlots, setSelectedTimeSlots] = useState([]);
 
-  const saveData = (data) => {
-    console.log('data!!', data);
-    console.log('state!!', state);
+  const saveData = () => {
     setState({ ...state, selectedTimeSlots: selectedTimeSlots });
     navigate("/confirm");
   };
